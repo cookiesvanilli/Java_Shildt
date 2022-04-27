@@ -66,7 +66,7 @@ public class DemoBoxWeight {
         BoxWeight mybox2 = new BoxWeight(2, 3, 4, 0.076);
         double vol;
 
-        ColorBox mycolor1 = new ColorBox(11,22,16, "red");
+        ColorBox mycolor1 = new ColorBox(11,22,16, "green");
         ColorBox mycolor2 = new ColorBox(4,5,6, "yellow");
 
         vol = mybox1.volume();
