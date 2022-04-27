@@ -49,6 +49,16 @@ class BoxWeight extends Box {
     }
 }
 
+class ColorBox extends Box {
+    String color;
+
+    ColorBox(double w, double h, double d, String c) {
+        width = w;
+        height = h;
+        depth = d;
+        color = c;
+    }
+}
 
 public class DemoBoxWeight {
     public static void main(String args[]) {
@@ -56,14 +66,19 @@ public class DemoBoxWeight {
         BoxWeight mybox2 = new BoxWeight(2, 3, 4, 0.076);
         double vol;
 
+        ColorBox mycolor1 = new ColorBox(11,22,16, "red");
+        ColorBox mycolor2 = new ColorBox(4,5,6, "yellow");
+
         vol = mybox1.volume();
         System.out.println("V mybox1 = " + vol);
         System.out.println("Weight mybox1 = " + mybox1.weight);
+        System.out.println("Color mycolor1 = " + mycolor1.color);
         System.out.println();
 
         vol = mybox2.volume();
         System.out.println("V mybox2 = " + vol);
         System.out.println("Weight mybox2 = " + mybox2.weight);
+        System.out.println("Color mycolor2 = " + mycolor2.color);
         System.out.println();
     }
 }
