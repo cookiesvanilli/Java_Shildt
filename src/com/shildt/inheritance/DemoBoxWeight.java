@@ -1,9 +1,9 @@
 package com.shildt.inheritance;
 
 class Box {
-    double width;
-    double height;
-    double depth;
+    private double width;
+    private double height;
+    private double depth;
 
     //клон объекта
     Box(Box ob) {
@@ -41,44 +41,71 @@ class BoxWeight extends Box {
     double weight; //Вес параллелепипеда
 
 
+    BoxWeight(BoxWeight ob) {
+        super(ob);
+        weight = ob.weight;
+    }
+
     BoxWeight(double w, double h, double d, double m) {
-        width = w;
-        height = h;
-        depth = d;
+        super(w, h, d);
+        weight = m;
+    }
+
+    BoxWeight() {
+        super();
+        weight = -1;
+    }
+
+    BoxWeight(double len,
+              double m) {
+        super(len);
         weight = m;
     }
 }
 
-class ColorBox extends Box {
-    String color;
+class Shipment extends BoxWeight {
+    double cost;
 
-    ColorBox(double w, double h, double d, String c) {
-        width = w;
-        height = h;
-        depth = d;
-        color = c;
+    Shipment(Shipment ob) {
+        super(ob);
+        cost = ob.cost;
     }
+
+    Shipment(double w, double h, double d, double m, double c) {
+        super(w, h, d, m);
+        cost = c;
+    }
+
+    Shipment() {
+        super();
+        cost = -1;
+    }
+
+    Shipment(double len, double m, double c) {
+        super(len, m);
+        cost = c;
+    }
+
 }
 
-public class DemoBoxWeight {
+class DemoShipment {
     public static void main(String args[]) {
-        BoxWeight mybox1 = new BoxWeight(10, 20, 15, 34.3);
-        BoxWeight mybox2 = new BoxWeight(2, 3, 4, 0.076);
+        Shipment shipment1 = new Shipment(10, 20, 15, 10, 3.41);
+        Shipment shipment2 = new Shipment(2, 3, 4, 0.76, 1.28);
         double vol;
+        vol = shipment1.volume();
 
-        ColorBox mycolor1 = new ColorBox(11,22,16, "green");
-        ColorBox mycolor2 = new ColorBox(4,5,6, "yellow");
+        System.out.println("V shipment1 = " + vol);
+        System.out.println("Weight shipment1 = " + shipment1.weight);
 
-        vol = mybox1.volume();
-        System.out.println("V mybox1 = " + vol);
-        System.out.println("Weight mybox1 = " + mybox1.weight);
-        System.out.println("Color mycolor1 = " + mycolor1.color);
+        System.out.println("Cost: $" + shipment1.cost);
         System.out.println();
 
-        vol = mybox2.volume();
-        System.out.println("V mybox2 = " + vol);
-        System.out.println("Weight mybox2 = " + mybox2.weight);
-        System.out.println("Color mycolor2 = " + mycolor2.color);
-        System.out.println();
+        vol = shipment2.volume();
+
+        System.out.println("V shipment2 = " + vol);
+        System.out.println("Weight shipment2 = " + shipment2.weight);
+
+        System.out.println("Cost: $" + shipment2.cost);
     }
 }
